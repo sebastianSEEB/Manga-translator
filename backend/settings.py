@@ -1,5 +1,6 @@
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 from urllib.parse import urlparse
 from backend.config import ROOT
 
@@ -13,8 +14,8 @@ class Settings:
     strict: bool = field(default_factory=lambda: os.getenv("LLM_STRICT_SCHEMA", "true").lower() == "true")
     cache_size: int = field(default_factory=lambda: int(os.getenv("CACHE_PAGES", "24")))
     cache_ttl: int = field(default_factory=lambda: int(os.getenv("CACHE_TTL_SECONDS", "1800")))
-    hosts: list[str] = field(default_factory=lambda: ["127.0.0.1", "localhost", "testserver"] + [h.strip() for h in os.getenv("EXTRA_ALLOWED_HOSTS", "").split(",") if h.strip()])
-    glossary_dir: object = ROOT / "glossaries"
+    hosts: list[str] = field(default_factory=lambda: ["127.0.0.1", "localhost", "testserver"] + [h.strip() for h in (os.getenv("EXTRA_ALLOWED_HOSTS", "") + "," + os.getenv("RAILWAY_PUBLIC_DOMAIN", "")).split(",") if h.strip()])
+    glossary_dir: object = field(default_factory=lambda: Path(os.getenv("GLOSSARY_DIR", str(ROOT / "glossaries"))))
 
     def validate(self):
         if len(self.token) < 32:

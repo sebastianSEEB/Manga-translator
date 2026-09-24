@@ -1,7 +1,8 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><title>Manga Translator settings</title>
 <link rel="stylesheet" href="ui.css"><body><main><h1>Manga Translator settings</h1>
-<p>The backend runs at <code>http://127.0.0.1:8000</code>. Only settings and your backend token are stored by this extension.</p>
-<label for="token">Backend token</label><input id="token" type="password" autocomplete="off" placeholder="BACKEND_TOKEN from .env">
+<p>Choose your HTTPS cloud backend or the local backend. Screenshots are sent to this address. Only settings and your backend token are stored by this extension.</p>
+<label for="backendUrl">Backend URL</label><input id="backendUrl" type="url" value="http://127.0.0.1:8000" placeholder="https://your-app.up.railway.app">
+<label for="token">Backend token</label><input id="token" type="password" autocomplete="off" placeholder="BACKEND_TOKEN from cloud variables or .env">
 <label for="series">Series ID</label><input id="series" value="wangan-midnight" pattern="[a-z0-9][a-z0-9_-]{0,63}" maxlength="64">
 <label><input id="learning" type="checkbox" checked> Enable tap-to-learn</label>
 <button id="save">Save settings</button><button id="connect">Check connection</button><button id="clear">Clear backend session cache</button>
@@ -11,4 +12,4 @@
 <label for="glossary">Glossary JSON</label><textarea id="glossary" spellcheck="false">{"title":"My series","terms":{},"characters":{}}</textarea>
 <button id="saveGlossary">Save glossary</button>
 <p class="hint">The LLM API key stays in the backend .env file. Never paste it into this extension. Cloud LLM requests follow your provider's retention settings.</p>
-</main><script src="options.js"></script></body></html>
+</main><script src="backend-url.js"></script><script src="options.js"></script></body></html>

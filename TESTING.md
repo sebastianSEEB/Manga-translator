@@ -2,7 +2,7 @@
 
 ## Verified in the build environment
 
-- 16 Python tests pass with injected OCR/translation components and a mocked
+- 18 Python tests pass with injected OCR/translation components and a mocked
   HTTP LLM response; no user screenshots or paid API calls are used.
 - Python source compiles.
 - Chrome extension JavaScript passes Node syntax checks.
@@ -68,3 +68,10 @@ The app is user-triggered, visible-area translation. It does not bypass a manga
 viewer's access restrictions, scrape chapters or save translated pages. White
 text covers are implemented; LaMa inpainting is the optional future v2.
 The phone path is a rendered screenshot workflow, not a Safari overlay.
+
+## Cloud preparation
+
+Cloud settings and non-destructive glossary seeding are covered by two additional
+Python tests. `node tests/backend_url.cjs` passes for valid HTTPS/local endpoints
+and rejects insecure cloud URLs and embedded credentials. Docker was unavailable
+in the build workspace; no image build or Railway launch is claimed.

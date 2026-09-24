@@ -1,4 +1,6 @@
-# Local Manga Translator
+# Manga Translator
+
+**Cloud mode:** no local Python setup needed. Follow [deploy/CLOUD.md](deploy/CLOUD.md) to run OCR/backend on Railway and connect Chrome/iPhone over HTTPS. Hosting and a cloud LLM have separate usage costs. This is a deployment-ready recipe, not a live deployment.
 
 Japanese → English for visible manga pages, with a Chrome Manifest V3 extension,
 local OCR, one page-context LLM call, session caching, series glossaries, learning

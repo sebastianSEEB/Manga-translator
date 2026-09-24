@@ -1,13 +1,14 @@
-const BASE = "http://127.0.0.1:8000";
+importScripts("backend-url.js");
 chrome.storage.local.setAccessLevel({accessLevel:"TRUSTED_CONTEXTS"});
-const defaultSettings = {token:"", series:"wangan-midnight", learning:true};
+const defaultSettings = {backendUrl:"http://127.0.0.1:8000", token:"", series:"wangan-midnight", learning:true};
 async function settings() { return {...defaultSettings, ...await chrome.storage.local.get(Object.keys(defaultSettings))}; }
 async function api(path, method="GET", body) {
   const s=await settings();
   if(!s.token) throw new Error("Open Settings and enter your backend token first.");
-  const response=await fetch(BASE+path,{method,headers:{"Authorization":"Bearer "+s.token,
+  const base=normalizeBackendUrl(s.backendUrl);
+  const response=await fetch(base+path,{method,headers:{"Authorization":"Bearer "+s.token,
     ...(body===undefined?{}:{"Content-Type":"application/json"})},
-    body:body===undefined?undefined:JSON.stringify(body), cache:"no-store",signal:AbortSignal.timeout(25000)});
+    body:body===undefined?undefined:JSON.stringify(body), cache:"no-store",redirect:"error",signal:AbortSignal.timeout(25000)});
   if(!response.ok){
     const value=await response.json().catch(()=>({}));
     throw new Error(typeof value.detail==="string"?value.detail:`Backend HTTP ${response.status}`);

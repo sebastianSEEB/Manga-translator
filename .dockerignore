@@ -1,0 +1,11 @@
+*
+!Dockerfile
+!requirements.txt
+!backend/
+!backend/**
+!glossaries/
+!glossaries/*.json
+!scripts/
+!scripts/setup_detector.py
+!scripts/cloud_start.py
+**/__pycache__/

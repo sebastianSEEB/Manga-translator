@@ -1,3 +1,5 @@
+**Cloud alternative:** if deployed using [deploy/CLOUD.md](../deploy/CLOUD.md), skip section A and use the cloud HTTPS URL/token in section B. Your PC can be off.
+
 # iPhone: Shortcut + private Tailscale connection
 
 This is the simplest phase-2 route. It displays a translated screenshot in Quick
