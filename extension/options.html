@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Manga Translator settings</title>
+<link rel="stylesheet" href="ui.css"><body><main><h1>Manga Translator settings</h1>
+<p>The backend runs at <code>http://127.0.0.1:8000</code>. Only settings and your backend token are stored by this extension.</p>
+<label for="token">Backend token</label><input id="token" type="password" autocomplete="off" placeholder="BACKEND_TOKEN from .env">
+<label for="series">Series ID</label><input id="series" value="wangan-midnight" pattern="[a-z0-9][a-z0-9_-]{0,63}" maxlength="64">
+<label><input id="learning" type="checkbox" checked> Enable tap-to-learn</label>
+<button id="save">Save settings</button><button id="connect">Check connection</button><button id="clear">Clear backend session cache</button>
+<p id="status" role="status"></p>
+<h2>Series glossary and character names</h2><p>Load the selected series, or edit this JSON and save to create a series. These explicit mappings persist across pages and restarts. Page translations do not.</p>
+<button id="loadGlossary">Load series</button>
+<label for="glossary">Glossary JSON</label><textarea id="glossary" spellcheck="false">{"title":"My series","terms":{},"characters":{}}</textarea>
+<button id="saveGlossary">Save glossary</button>
+<p class="hint">The LLM API key stays in the backend .env file. Never paste it into this extension. Cloud LLM requests follow your provider's retention settings.</p>
+</main><script src="options.js"></script></body></html>

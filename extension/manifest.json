@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Manga Translator \u00b7 Local",
+  "version": "1.0.0",
+  "description": "Translate visible Japanese manga with your own local backend. Session-only results.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Manga Translator"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "translate-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+T",
+        "mac": "Alt+Shift+T"
+      },
+      "description": "Translate visible manga"
+    },
+    "toggle-original": {
+      "suggested_key": {
+        "default": "Alt+Shift+O",
+        "mac": "Alt+Shift+O"
+      },
+      "description": "Toggle original and English"
+    }
+  }
+}
